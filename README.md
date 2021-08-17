@@ -19,7 +19,7 @@ pip install plotly
 pip install kaleido
 pip install pillow
 pip install discord.py
-python main.py [都道府県名] [市区町村名]
+python main.py
 ```
 
 # 使用WebAPI(Using WebAPI)

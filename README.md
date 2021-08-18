@@ -18,6 +18,7 @@ cd discord-weather-webhook
 pip install plotly
 pip install kaleido
 pip install pillow
+pip install requests
 pip install discord.py
 python main.py
 ```

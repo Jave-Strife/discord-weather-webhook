@@ -1,4 +1,5 @@
 import csv
+import os
 import random
 import string
 import discord
@@ -7,8 +8,11 @@ from methods import get_owm_data, make_embed_image_hourly, convert_date_jp
 from config import DISCORD
 
 def main():
+    # 絶対パスの取得
+    abs_path = os.path.dirname( __file__ )
+
     # CSVファイルの読み込み
-    with open('pref_data/use_data.csv', 'r', encoding = 'shift-jis') as f:
+    with open( f'{abs_path}/pref_data/use_data.csv', 'r', encoding = 'shift-jis') as f:
         reader = csv.DictReader( f )
         locations = [ r for r in reader ]
 
@@ -30,7 +34,7 @@ def main():
         f_name = f'{get_random_str()}.png'
 
         # Discord.pyを用いたWebhookの設定
-        webhook_data = DISCORD['Webhook']
+        webhook_data = DISCORD['Webhook2']
         webhook = discord.Webhook.partial(
             webhook_data['ID'],
             webhook_data['TOKEN'],

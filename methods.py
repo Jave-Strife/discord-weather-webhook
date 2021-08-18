@@ -1,6 +1,7 @@
 import html
 import io
 import json
+import os
 import time
 import urllib.request
 import plotly.graph_objects as go
@@ -198,10 +199,10 @@ def make_embed_image_hourly( wd_hr, pref, city ):
     img_clear = Image.new('RGBA', img.size, ( 255, 255, 255, 0 ) )
 
     # 天気アイコンを透過画像に貼り付け
-    icon_position_y = 106
+    icon_position_y = 105
     for icon in icon_hr:
         img_clear.paste( icon, ( 196, icon_position_y ) )
-        icon_position_y = icon_position_y + 78
+        icon_position_y = icon_position_y + 77
 
     # 透過画像を画像の基に貼り付け
     img = Image.alpha_composite( img, img_clear )
@@ -223,8 +224,11 @@ def convert_date_jp( dt ):
 
 # 天気アイコンを取得するメソッド
 def get_weather_icon( icon_id ):
+    # 絶対パスの取得
+    abs_path = os.path.dirname( __file__ )
+
     # アイコンのディレクトリを指定
-    icon_path = 'weather_icon'
+    icon_path = f'{abs_path}/weather_icon'
 
     # アイコン一覧
     icons = {
